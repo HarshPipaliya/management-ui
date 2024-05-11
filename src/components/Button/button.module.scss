@@ -1,0 +1,14 @@
+@use "styles/variables.scss" as v;
+@use "styles/colors.scss" as c;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$padding-5;
+  background-color: c.$bg-primary;
+  border: none;
+  color: #fff;
+  border-radius: v.$border-radius-2;
+  cursor: pointer;
+}

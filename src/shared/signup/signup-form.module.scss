@@ -1,0 +1,21 @@
+@use "styles/colors.scss" as c;
+@use "styles/variables.scss" as v;
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid c.$gray-400;
+    width: 400px;
+    padding: v.$padding-6;
+    border-radius: v.$border-radius-4;
+  }
+}

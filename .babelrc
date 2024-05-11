@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "components": "./src/components",
+          "pages": "./src/pages",
+          "utils": "./src/utils",
+          "styles": "./src/styles",
+          "router": "./src/router",
+          "constant": "./src/constant",
+          "env": "./src/env",
+          "@types": "./src/@types",
+          "store": "./src/store"
+        }
+      }
+    ]
+  ]
+}

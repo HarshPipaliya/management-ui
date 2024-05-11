@@ -1,0 +1,19 @@
+@use "styles/colors.scss" as c;
+@use "styles/variables.scss" as v;
+@use "styles/mixins.scss" as m;
+
+.container {
+  position: relative;
+  @include m.flexbox();
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+    padding: v.$padding-10;
+    border-radius: v.$border-radius-2;
+    background: #fff;
+    color: #000;
+  }
+}

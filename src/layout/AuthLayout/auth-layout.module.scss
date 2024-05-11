@@ -1,0 +1,26 @@
+@use "styles/mixins.scss" as m;
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  @include m.flexbox(row, space-between);
+
+  .content {
+    flex: 1;
+  }
+
+  .leftImage {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  .rightImage {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: rotate(180deg);
+  }
+}

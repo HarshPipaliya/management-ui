@@ -1,0 +1,13 @@
+@use "styles/variables.scss" as v;
+@use "styles/colors.scss" as c;
+
+.label {
+  display: block;
+}
+
+.input {
+  border: 2px solid c.$gray-300;
+  border-radius: v.$border-radius-2;
+  padding: v.$padding-4;
+  outline: none;
+}

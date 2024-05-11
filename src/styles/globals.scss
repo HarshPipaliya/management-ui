@@ -1,0 +1,42 @@
+@use "styles/colors.scss" as c;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  max-width: 100vw;
+  overflow: hidden;
+  background-color: #393939;
+  color: #fff;
+}
+
+// Utility classes
+.full-width {
+  width: 100%;
+  max-width: -webkit-fill-available;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 5px;
+}
+.mt-2 {
+  margin-top: 8px;
+}
+.mt-3 {
+  margin-top: 10px;
+}
+.mt-4 {
+  margin-top: 14px;
+}
