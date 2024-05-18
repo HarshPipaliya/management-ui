@@ -1,12 +1,13 @@
 import { useLoginByTokenMutation } from "api";
-import { SplashScreen } from "components";
+import { Navbar, SplashScreen } from "components";
 import { Routes } from "enum";
 import useAuth from "hooks/useAuth";
 import React, { useEffect } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const PrivateRoute: React.FC = () => {
+const PrivateLayout: React.FC = () => {
+  const navigate = useNavigate();
   const { user, token, setUser } = useAuth();
 
   const [loginByToken, { isLoading }] = useLoginByTokenMutation();
@@ -28,6 +29,7 @@ const PrivateRoute: React.FC = () => {
       setUser(res?.data?.data);
     } catch (error: any) {
       toast.error(error?.message);
+      navigate(Routes.LOGIN);
     }
   };
   return token ? (
@@ -36,7 +38,7 @@ const PrivateRoute: React.FC = () => {
         <SplashScreen />
       ) : (
         <div>
-          <p>This is navbar with layout</p>
+          <Navbar />
           <Outlet />
         </div>
       )}
@@ -46,4 +48,4 @@ const PrivateRoute: React.FC = () => {
   );
 };
 
-export default PrivateRoute;
+export default PrivateLayout;

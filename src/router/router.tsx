@@ -1,14 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import PrivateRoute from "./private-route";
 import DynamicRoute from "./dynamic-route";
 import { publicRoutes } from "./routes";
-import { AuthLayout } from "layout";
+import { AuthLayout, PrivateLayout } from "layout";
 
 const Router: React.FC = () => {
   return (
     <Routes>
-      <Route element={<PrivateRoute />}>
+      <Route element={<PrivateLayout />}>
         <Route path="/*" element={<DynamicRoute />} />
       </Route>
       <Route element={<AuthLayout />}>
@@ -16,6 +15,10 @@ const Router: React.FC = () => {
           return <Route key={name} path={path} element={element} />;
         })}
       </Route>
+      <Route
+        path="*"
+        element={<h1 className="text-center">Page Not Found!</h1>}
+      />
     </Routes>
   );
 };

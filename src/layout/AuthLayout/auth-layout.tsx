@@ -6,7 +6,7 @@ const AuthLayout: React.FC = () => {
   return (
     <div className={styles.container}>
       <img src="/bg-preview.png" className={styles.leftImage} />
-      <img src="/bg-preview.png" className={styles.rightImage} />
+      {/* <img src="/bg-preview.png" className={styles.rightImage} /> */}
       <div className={styles.content}>
         <Outlet />
       </div>

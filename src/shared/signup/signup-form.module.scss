@@ -1,21 +1,42 @@
 @use "styles/colors.scss" as c;
 @use "styles/variables.scss" as v;
+@use "styles/mixins.scss" as m;
 
 .container {
-  width: 100vw;
-  height: 100vh;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include m.flexbox();
 
   .form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    border: 1px solid c.$gray-400;
+    gap: 20px;
     width: 400px;
-    padding: v.$padding-6;
-    border-radius: v.$border-radius-4;
+    padding: v.$padding-10;
+    border-radius: v.$border-radius-2;
+
+    .login-with {
+      text-align: center;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 1px;
+        background-color: #fff;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 1px;
+        background-color: #fff;
+      }
+    }
   }
 }

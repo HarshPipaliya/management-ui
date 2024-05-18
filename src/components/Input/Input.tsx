@@ -11,6 +11,8 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
       fullWidth,
       label,
       labelClassname,
+      error,
+      helperText,
       ...rest
     },
     ref
@@ -22,8 +24,15 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
         <input
           ref={ref}
           {...rest}
-          className={cn(styles.input, className, fullWidthClass, "mt-1")}
+          className={cn(
+            styles.input,
+            className,
+            fullWidthClass,
+            "mt-1",
+            error ? styles["input-error"] : ""
+          )}
         />
+        {helperText && <p className={styles["helper-text"]}>{helperText}</p>}
       </div>
     );
   }

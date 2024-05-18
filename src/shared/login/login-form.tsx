@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILoginForm, LoginInputs, loginSchema } from "./const";
 import styles from "./login-form.module.scss";
-import { Button, Input } from "components";
+import { AuthHeader, Button, Input } from "components";
 import { useLoginMutation } from "api";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
 import { setLocalItem } from "utils";
-import { LocalItems } from "enum";
+import { LocalItems, Routes } from "enum";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const LoginForm: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const onSubmit = async (values: ILoginForm) => {
     try {
@@ -46,25 +46,36 @@ const LoginForm: React.FC = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div>
-          <h1>SIGN IN</h1>
-          <h5>Please Enter Your Credentials to Login.</h5>
-        </div>
+        <AuthHeader
+          primaryText="Sign In"
+          secondaryText="Please Enter Your Credentials to Login."
+        />
         <Input
           {...register(LoginInputs.USERNAME)}
           placeholder="Enter here"
           label="Username"
           fullWidth
+          error={!!errors[LoginInputs.USERNAME]}
+          helperText={errors[LoginInputs.USERNAME]?.message}
         />
         <Input
           {...register(LoginInputs.PASSWORD)}
           placeholder="Enter here"
           label="Password"
           fullWidth
+          error={!!errors[LoginInputs.PASSWORD]}
+          helperText={errors[LoginInputs.PASSWORD]?.message}
         />
-        <Button fullWidth type="submit">
+        <Button fullWidth type="submit" loading={isLoading}>
           Login
         </Button>
+        {/* <p className={styles["login-with"]}>Or Login With</p>
+        <Button variant="outlined" fullWidth>
+          Sign in with google
+        </Button> */}
+        <p className="text-center">
+          Don't have an account? <Link to={Routes.SIGNUP}>Signup here</Link>
+        </p>
       </form>
     </div>
   );

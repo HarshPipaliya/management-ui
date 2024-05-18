@@ -1,9 +1,12 @@
 import { IRoutes } from "@types";
+import { Routes } from "enum";
 import {
   LoginPage,
   OrganizationDashboard,
   SignupPage,
   UserDashboard,
+  UserMangement,
+  UserProfile,
 } from "pages";
 
 export const organizationRoutes: IRoutes[] = [
@@ -13,9 +16,9 @@ export const organizationRoutes: IRoutes[] = [
     element: <OrganizationDashboard />,
   },
   {
-    name: "Home",
-    path: "/organization/home",
-    element: <LoginPage />,
+    name: "User Management",
+    path: Routes.USER_MANAGEMENT,
+    element: <UserMangement />,
   },
 ];
 export const userRoutes: IRoutes[] = [
@@ -26,20 +29,20 @@ export const userRoutes: IRoutes[] = [
   },
   {
     name: "Home",
-    path: "/user/home",
-    element: <LoginPage />,
+    path: Routes.USER_PROFILE,
+    element: <UserProfile />,
   },
 ];
 
 export const publicRoutes: IRoutes[] = [
   {
     name: "Login",
-    path: "/login",
+    path: Routes.LOGIN,
     element: <LoginPage />,
   },
   {
     name: "Signup",
-    path: "/signup",
+    path: Routes.SIGNUP,
     element: <SignupPage />,
   },
 ];

@@ -1,0 +1,28 @@
+@use "styles/colors.scss" as c;
+@use "styles/variables.scss" as v;
+@use "styles/mixins.scss" as m;
+
+.container {
+  background-color: c.$primary;
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  .header {
+    @include m.flexbox(row, space-between, center);
+    padding: 0px v.$padding-10;
+    flex: 1;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .logo > img {
+        width: 50px;
+      }
+    }
+    .header-right {
+    }
+  }
+}

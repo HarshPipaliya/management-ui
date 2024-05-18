@@ -5,4 +5,6 @@ export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   fullWidth?: boolean;
   label?: string;
   labelClassname?: string;
+  error?: boolean;
+  helperText?: string;
 }

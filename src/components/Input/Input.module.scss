@@ -6,8 +6,19 @@
 }
 
 .input {
-  border: 2px solid c.$gray-300;
+  border: 1px solid c.$bg-primary;
   border-radius: v.$border-radius-2;
   padding: v.$padding-4;
   outline: none;
+  font-size: v.$text-sm;
+
+  &-error {
+    border: 1px solid c.$bg-danger;
+  }
+}
+
+.helper-text {
+  color: c.$bg-danger;
+  margin-top: v.$margin-2;
+  font-size: v.$text-sm;
 }

@@ -6,22 +6,24 @@ import { Roles } from "enum";
 
 const DynamicRoute: React.FC = () => {
   const { user } = useAuth();
+  console.log({ sdsdsdsd: user });
 
   return (
     <Routes>
-      {user?.role === Roles.ORGANIZATION ? (
+      {user?.role === Roles.ORGANIZATION && (
         <>
           {organizationRoutes.map(({ name, path, element }) => {
             return <Route key={name} path={path} element={element} />;
           })}
         </>
-      ) : user?.role === Roles.ORGANIZATION ? (
+      )}
+      {user?.role === Roles.USER && (
         <>
           {userRoutes.map(({ name, path, element }) => {
             return <Route key={name} path={path} element={element} />;
           })}
         </>
-      ) : null}
+      )}
     </Routes>
   );
 };

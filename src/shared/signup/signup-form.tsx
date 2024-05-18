@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ISignupForm, SignupInputs, signupSchema } from "./const";
 import styles from "./signup-form.module.scss";
-import { Button, Input } from "components";
+import { AuthHeader, Button, Input } from "components";
 import { useSignupMutation } from "api";
 import { Roles, Routes } from "enum";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const SignupForm: React.FC = () => {
@@ -19,7 +19,7 @@ const SignupForm: React.FC = () => {
     resolver: yupResolver(signupSchema),
   });
 
-  const [signup] = useSignupMutation();
+  const [signup, { isLoading }] = useSignupMutation();
 
   const onSubmit = async (values: ISignupForm) => {
     try {
@@ -40,40 +40,58 @@ const SignupForm: React.FC = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <h2 className="text-center">Signup</h2>
-        <Input
-          {...register(SignupInputs.FIRSTNAME)}
-          placeholder="Enter here"
-          label="First Name"
-          fullWidth
+        <AuthHeader
+          primaryText="Create an account"
+          secondaryText="Please Enter Your Credentials to Signup."
         />
+        <div className="flex items-start gap-3">
+          <Input
+            {...register(SignupInputs.FIRSTNAME)}
+            placeholder="Enter here"
+            label="Firstname"
+            fullWidth
+            error={!!errors[SignupInputs.FIRSTNAME]}
+            helperText={errors[SignupInputs.FIRSTNAME]?.message}
+          />
+          <Input
+            {...register(SignupInputs.LASTNAME)}
+            placeholder="Enter here"
+            label="Lastname"
+            fullWidth
+            error={!!errors[SignupInputs.LASTNAME]}
+            helperText={errors[SignupInputs.LASTNAME]?.message}
+          />
+        </div>
         <Input
-          {...register(SignupInputs.LASTNAME)}
+          {...register(SignupInputs.EMAIL)}
           placeholder="Enter here"
-          label="Last Name"
+          label="Email"
           fullWidth
+          error={!!errors[SignupInputs.EMAIL]}
+          helperText={errors[SignupInputs.EMAIL]?.message}
         />
         <Input
           {...register(SignupInputs.MOBINE_NUMBER)}
           placeholder="Enter here"
           label="Mobile No."
           fullWidth
-        />
-        <Input
-          {...register(SignupInputs.EMAIL)}
-          placeholder="Enter here"
-          label="Email"
-          fullWidth
+          error={!!errors[SignupInputs.MOBINE_NUMBER]}
+          helperText={errors[SignupInputs.MOBINE_NUMBER]?.message}
         />
         <Input
           {...register(SignupInputs.PASSWORD)}
           placeholder="Enter here"
           label="Password"
           fullWidth
+          error={!!errors[SignupInputs.PASSWORD]}
+          helperText={errors[SignupInputs.PASSWORD]?.message}
         />
-        <Button fullWidth type="submit">
-          Submit
+        <Button fullWidth type="submit" loading={isLoading}>
+          Let's go
         </Button>
+        <p className="text-center">
+          Already have an account? <Link to={Routes.LOGIN}>Login here</Link>
+        </p>
       </form>
     </div>
   );

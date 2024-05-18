@@ -10,10 +10,10 @@ export enum SignupInputs {
 }
 
 export const signupSchema = yup.object({
-  [SignupInputs.FIRSTNAME]: stringRequired("Please enter username"),
-  [SignupInputs.LASTNAME]: stringRequired("Please enter password"),
-  [SignupInputs.MOBINE_NUMBER]: stringRequired("Please enter password"),
-  [SignupInputs.EMAIL]: stringRequired("Please enter password"),
+  [SignupInputs.FIRSTNAME]: stringRequired("Please enter firstname"),
+  [SignupInputs.LASTNAME]: stringRequired("Please enter lastname"),
+  [SignupInputs.MOBINE_NUMBER]: stringRequired("Please enter mobile"),
+  [SignupInputs.EMAIL]: stringRequired("Please enter email"),
   [SignupInputs.PASSWORD]: stringRequired("Please enter password"),
 });
 
